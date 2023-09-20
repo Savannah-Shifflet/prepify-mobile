@@ -1,6 +1,6 @@
 # Prepify-Mobile - Currently in Progress
 
-### Concept, low-fidelity, and high-fidelity designs created by Tristan Ramos. 
+### Collaborator: Concept, low-fidelity, and high-fidelity designs created by [Tristan Ramos](https://www.ramostristan.com/case-studies/my-passion-project). 
 ---
 
 ## Description 

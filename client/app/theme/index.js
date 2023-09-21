@@ -14,5 +14,13 @@ export default theme = createTheme({
     tertiary: '#FFA900',
     accent: '#CD113B',
     background: "#000",
+  },
+  components: {
+    Text: {
+      style: {
+        color: "#CD113B",
+        fontFamily: 'JosefinSans_400Regular'
+      }
+    }
   }
 })

@@ -12,26 +12,38 @@ export default styles = StyleSheet.create({
         justifyContent: 'center',
         alignContent: 'center',
         alignItems: 'center',
-        backgroundColor: 'green',
         width: '100%',
         flexDirection: 'row',
     },
     col: {
         1: {
-            width: '25%',
-            backgroundColor: 'red'
+            width: '25%'
         },
         2: {
             width: '50%',
-            backgroundColor: 'red'
         },
         3: {
             width: '75%',
-            backgroundColor: 'red'
         },
         4: {
             width: '100%',
-            backgroundColor: 'red'
         }
+    },
+    row: {
+        1: {
+            height: '25%'
+        },
+        2: {
+            height: '50%',
+        },
+        3: {
+            height: '75%',
+        },
+        4: {
+            height: '100%',
+        }
+    },
+    text: {
+        fontFamily: 'RibeyeMarrow-Regular'
     }
 })

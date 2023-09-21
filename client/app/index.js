@@ -1,33 +1,42 @@
-import { View, SafeAreaView, KeyboardAvoidingView, Platform } from 'react-native';
-import { Link } from 'expo-router';
-import { Text, Input, Button, Card } from '@rneui/themed';
+import { View } from "react-native";
+import React from "react";
+import { Link } from "expo-router";
+import { Input, Button, Text } from "@rneui/themed";
+import {
+    useFonts,
+    JosefinSans_400Regular
+} from "@expo-google-fonts/josefin-sans";
 
-import styles from './theme/styles';
-import KeyboardWrapper from './components/KeyboardWrapper';
+import styles from "./theme/styles";
+import KeyboardWrapper from "./components/KeyboardWrapper";
 
-const Home = () => {
+export default function Home() {
+    let [fontsLoaded] = useFonts({
+        JosefinSans_400Regular
+    });
 
-    return (
-        <KeyboardWrapper >
+    if (!fontsLoaded) {
+        return null;
+    } else {
+        return (
+        <KeyboardWrapper>
             <View style={styles.container}>
-                <View style={styles.col[3]}>
-                    <Text h1>Login to your account</Text>
-                    <Input placeholder='email'></Input>
-                    <Input
-                        placeholder='Password'
-                        secureTextEntry={true}
-                        errorStyle={{ color: 'red' }}
-                        errorMessage='Credentials are not valid.'
-                        ></Input>
-                    <Button size='md'>Sign up</Button>
+            <View style={styles.col[3]}>
+                <Text>Login to your account</Text>
+                <Input placeholder="email"></Input>
+                <Input
+                placeholder="Password"
+                secureTextEntry={true}
+                errorStyle={{ color: "red" }}
+                errorMessage="Credentials are not valid."
+                ></Input>
+                <Button size="md">Sign up</Button>
 
-                    <Text>Don't have an account?</Text>
-                    <Link href={'/signup'}>Signup</Link>
-                </View>
+                <Text>Don't have an account?</Text>
+                <Link href={"/signup"}>Signup</Link>
+            </View>
             </View>
         </KeyboardWrapper>
-
-    )
-};
-
-export default Home;
+        );
+    }
+}

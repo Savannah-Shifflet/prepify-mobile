@@ -13,7 +13,7 @@ export default styles = StyleSheet.create({
         alignContent: 'center',
         alignItems: 'center',
         width: '100%',
-        flexDirection: 'row',
+        flexDirection: 'row'
     },
     col: {
         1: {
@@ -42,8 +42,5 @@ export default styles = StyleSheet.create({
         4: {
             height: '100%',
         }
-    },
-    text: {
-        fontFamily: 'RibeyeMarrow-Regular'
     }
 })

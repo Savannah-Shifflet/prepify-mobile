@@ -1,26 +1,31 @@
 import { createTheme } from '@rneui/themed';
 
 export default theme = createTheme({
-  lightColors: {
-    primary: "#0079FF",
-    secondary: "#00DFA2",
-    tertiary: '#F6FA70',
-    accent: '#FF0060',
-    background: '#fff',
-  },
-  darkColors: {
-    primary: '#00235B',
-    secondary: '#36AE7C',
-    tertiary: '#FFA900',
-    accent: '#CD113B',
-    background: "#000",
+  colors: {
+    primary: "#D1E8F8",
+    secondary: "#FF9392",
+    tertiary: 'green',
+    accent: 'red',
+    background: '#27005D',
+    white: "#D1E8F8",
+    black: "#D1E8F8",
+    grey0: "#D1E8F8",
+    searchBg: "#D1E8F8",
+    divider: "#D1E8F8"
   },
   components: {
     Text: {
       style: {
-        color: "#CD113B",
-        fontFamily: 'JosefinSans_400Regular'
+        color: "#D1E8F8",
+        fontFamily: 'ConcertOne_400Regular'
       }
-    }
+    },
+    Button: (props,theme)=>({
+      titleStyle: {
+        fontSize: 18,
+        fontFamily: 'ConcertOne_400Regular',
+        color: theme.colors.secondary
+      }
+    })
   }
 })

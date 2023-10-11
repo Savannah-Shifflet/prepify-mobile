@@ -20,7 +20,7 @@ export default theme = createTheme({
         fontFamily: 'ConcertOne_400Regular'
       }
     },
-    Button: (props,theme)=>({
+    Button: (props, theme)=>({
       titleStyle: {
         fontSize: 18,
         fontFamily: 'ConcertOne_400Regular',

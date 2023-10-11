@@ -1,6 +1,16 @@
-const mongoose = require('mongoose');
+const Sequelize = require('sequelize');
 require('dotenv').config();
 
-mongoose.connect(process.env.MONGODB_URI || `mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PW}@cluster0.5gxmekr.mongodb.net/prepify`);
+const sequelize = new Sequelize(
+  process.env.DB_NAME,
+  process.env.DB_USER,
+  process.env.DB_PASSWORD,
+  {
+    host: process.env.HOST,
+    dialect: 'postgres',
+    port: 5432
+  }
+);
 
-module.exports = mongoose.connection;
+module.exports = sequelize;
+

@@ -1,13 +1,35 @@
-import { View } from "react-native";
-import React from "react";
+import { ActivityIndicator, View } from "react-native";
+import React, { useState } from "react";
 import { Link } from "expo-router";
 import { Input, Button, Text } from "@rneui/themed";
+import { signInWithEmailAndPassword } from "firebase/auth";
 
+import { firebase_auth } from "../firebaseConfig";
 import styles from "./theme/styles";
 import KeyboardWrapper from "./components/KeyboardWrapper";
 import SvgLogo from "./assets/logoJS";
 
 export default function Home() {
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [loading, setLoading] = useState(false);
+    const auth = firebase_auth
+
+    const logIn = async()=>{
+        setLoading(true);
+        try {
+            const response = await signInWithEmailAndPassword(auth, email, password);
+            console.log(response);
+        } catch (error) {
+            const passwordInput = document.getElementById('passwordInput')
+            passwordInput.errorMessage="Credentials are not valid."
+            passwordInput.errorStyle={ color: "red" }
+            console.log(error);
+        }finally {
+            setLoading(false)
+        }
+    }
+
         return (
         <KeyboardWrapper>
             <View style={styles.container }>
@@ -16,14 +38,22 @@ export default function Home() {
                         <SvgLogo/>
                     </View>
                     <Text>Login to your account:</Text>
-                    <Input placeholder="Email"></Input>
                     <Input
-                    placeholder="Password"
-                    secureTextEntry={true}
-                    errorStyle={{ color: "red" }}
-                    errorMessage="Credentials are not valid."
+                        value={email}
+                        autoCapitalize="none"
+                        onChangeText={(text)=>setEmail(text)}
+                        placeholder="Email"></Input>
+                    <Input
+                        id = "passwordInput"
+                        placeholder="Password"
+                        secureTextEntry={true}
+                        autoCapitalize="none"
+                        onChangeText={(text)=>setPassword(text)}
+                        value={password}
                     ></Input>
-                    <Button size="md"
+                    { loading ?
+                        <ActivityIndicator size="large" /> :
+                        <Button size="md"
                         title={'Sign in'}
                         icon={{
                             name: 'arrow-right',
@@ -31,7 +61,9 @@ export default function Home() {
                             size: 15,
                             color: theme.colors.secondary,
                         }}
-                        iconRight/>
+                        iconRight
+                        onPress={logIn}/>
+                    }
 
                     <Text>Don't have an account? <Link href={"/signup"}>Sign up</Link> </Text>
                 </View>

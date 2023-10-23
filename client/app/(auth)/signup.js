@@ -1,16 +1,18 @@
 import { View, ActivityIndicator } from 'react-native';
 import React, { useState } from "react";
-import KeyboardWrapper from "./components/KeyboardWrapper";
+import KeyboardWrapper from "../components/KeyboardWrapper";
 import { Input, Button, Text } from "@rneui/themed";
-import styles from "./theme/styles";
-import { firebase_auth } from "../firebaseConfig";
+import styles from "../theme/styles";
+import { firebase_auth } from "../../firebaseConfig";
 import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { useRouter } from "expo-router";
 
 const Signup = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [loading, setLoading] = useState(false);
-    const auth = firebase_auth
+    const auth = firebase_auth;
+    const router = useRouter();
 
     const signUp = async()=>{
         setLoading(true);
@@ -20,7 +22,8 @@ const Signup = () => {
         } catch (error) {
             console.log(error);
         }finally {
-            setLoading(false)
+            setLoading(false);
+            router.replace("/inside")
         }
     }
 

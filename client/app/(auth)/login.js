@@ -39,7 +39,7 @@ export default function Home() {
                     <View style={{ aspectRatio: 100/36}}>
                         <SvgLogo/>
                     </View>
-                    <Text>Login to your account:</Text>
+                    <Text h4 style={{textAlign: "center", marginBottom: 10}}>Login to your account:</Text>
                     <Input
                         value={email}
                         autoCapitalize="none"
@@ -51,7 +51,6 @@ export default function Home() {
                         autoCapitalize="none"
                         onChangeText={(text)=>setPassword(text)}
                         value={password}
-                        errorStyle={{ color: "red" }}
                         errorMessage={errorValue}
                     ></Input>
                     { loading ?
@@ -68,7 +67,7 @@ export default function Home() {
                         onPress={logIn}/>
                     }
 
-                    <Text>Don't have an account? <Link href={"(auth)/signup"}>Sign up</Link> </Text>
+                    <Text style={{marginTop: 10}}>Don't have an account? <Link href={"(auth)/signup"}>Sign up</Link> </Text>
                 </View>
             </View>
         </KeyboardWrapper>

@@ -7,9 +7,9 @@ export default theme = createTheme({
     tertiary: 'green',
     accent: 'red',
     background: '#27005D',
-    white: "#D1E8F8",
+    white: "#fff",
     black: "#D1E8F8",
-    grey0: "#D1E8F8",
+    grey0: "#D3D3D3",
     searchBg: "#D1E8F8",
     divider: "#D1E8F8"
   },
@@ -26,6 +26,16 @@ export default theme = createTheme({
         fontFamily: 'ConcertOne_400Regular',
         color: theme.colors.secondary
       }
-    })
+    }),
+    Input: (props, theme)=>({
+      errorStyle: { color: "red", marginTop: 5 },
+      labelStyle: { color: theme.colors.primary},
+      placeholderTextColor: theme.colors.grey0,
+      inputContainerStyle: {borderBottomColor: theme.colors.secondary},
+      style: {
+        fontFamily: 'JosefinSans_400Regular',
+        fontWeight: 'bold'
+      }
+    }),
   }
 })

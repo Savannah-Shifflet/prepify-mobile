@@ -93,7 +93,6 @@ const Signup = () => {
                     value={input.email}
                     autoCapitalize="none"
                     onChangeText={(text) => onInputChange("email", text)}
-                    errorStyle={{ color: "red" }}
                     errorMessage={error.email}></Input>
                 <Input
                     placeholder="Password"
@@ -102,7 +101,6 @@ const Signup = () => {
                     autoCapitalize="none"
                     onChangeText={(text) => onInputChange("password", text)}
                     value={input.password}
-                    errorStyle={{ color: "red" }}
                     errorMessage={error.password}
                 ></Input>
                 <Input
@@ -111,7 +109,6 @@ const Signup = () => {
                     label="Confirm Password"
                     onChangeText={(text) => onInputChange("confirmPassword", text)}
                     value={input.confirmPassword}
-                    errorStyle={{ color: "red" }}
                     errorMessage={error.confirmPassword}
                 ></Input>
                 { loading ?

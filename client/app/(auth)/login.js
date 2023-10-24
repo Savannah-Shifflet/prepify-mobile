@@ -20,7 +20,6 @@ export default function Home() {
         setLoading(true);
         try {
             const response = await appLogIn(email, password);
-            console.log(response);
             if(response?.user){
                 setLoading(false);
                 router.replace("/inside")
@@ -29,7 +28,6 @@ export default function Home() {
                 setLoading(false);
             }
         } catch (error) {
-            
             console.log(error);
         }
     }

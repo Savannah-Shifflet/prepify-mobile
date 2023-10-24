@@ -3,27 +3,26 @@ import React, { useState } from "react";
 import KeyboardWrapper from "../components/KeyboardWrapper";
 import { Input, Button, Text } from "@rneui/themed";
 import styles from "../theme/styles";
-import { firebase_auth } from "../../firebaseConfig";
-import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { useRouter } from "expo-router";
+import { appSignUp } from "../utils/store";
 
 const Signup = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [loading, setLoading] = useState(false);
-    const auth = firebase_auth;
     const router = useRouter();
 
     const signUp = async()=>{
         setLoading(true);
         try {
-            const response = await createUserWithEmailAndPassword(auth, email, password);
+            const response = await appSignUp(email, password);
+            if(resp?.user){
+                setLoading(false);
+                router.replace("/inside")
+            }
             console.log(response);
         } catch (error) {
             console.log(error);
-        }finally {
-            setLoading(false);
-            router.replace("/inside")
         }
     }
 

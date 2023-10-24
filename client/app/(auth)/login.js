@@ -2,10 +2,9 @@ import { ActivityIndicator, View } from "react-native";
 import React, { useState } from "react";
 import { Link } from "expo-router";
 import { Input, Button, Text } from "@rneui/themed";
-import { signInWithEmailAndPassword } from "firebase/auth";
 import { useRouter } from "expo-router";
 
-import { firebase_auth } from "../../firebaseConfig";
+import { appSignIn } from "../utils/store";
 import styles from "../theme/styles";
 import KeyboardWrapper from "../components/KeyboardWrapper";
 import SvgLogo from "../assets/logoJS";
@@ -14,22 +13,22 @@ export default function Home() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [loading, setLoading] = useState(false);
-    const auth = firebase_auth;
     const router = useRouter();
 
     const logIn = async()=>{
         setLoading(true);
         try {
-            const response = await signInWithEmailAndPassword(auth, email, password);
+            const response = await appSignIn(email, password);
             console.log(response);
+            if(response?.user){
+                setLoading(false);
+                router.replace("/inside")
+            }
         } catch (error) {
             // const passwordInput = document.getElementById('passwordInput')
             // passwordInput.errorMessage="Credentials are not valid."
             // passwordInput.errorStyle={ color: "red" }
             console.log(error);
-        }finally {
-            setLoading(false);
-            router.replace("/inside")
         }
     }
 

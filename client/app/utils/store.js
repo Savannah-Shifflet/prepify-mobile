@@ -4,9 +4,8 @@ import {
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
   signOut,
-  updateProfile,
-} from "firebase/auth/react-native";
-import { firebase_app, firebase_auth } from "../../firebaseConfig";
+} from "firebase/auth";
+import { firebase_auth } from "../../firebaseConfig";
 
 export const AuthStore = new Store({
   isLoggedIn: false,
@@ -49,13 +48,10 @@ export const appSignOut = async () => {
   }
 };
 
-export const appSignUp = async (email, password, displayName) => {
+export const appSignUp = async (email, password) => {
   try {
     // this will trigger onAuthStateChange to update the store..
     const resp = await createUserWithEmailAndPassword(firebase_auth, email, password);
-
-    // add the displayName
-    await updateProfile(resp.user, { displayName });
 
     AuthStore.update((store) => {
       store.user = firebase_auth.currentUser;

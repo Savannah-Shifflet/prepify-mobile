@@ -9,7 +9,6 @@ export default function Inside() {
 
     return (
             <View style={styles.container }>
-                {console.log("inside user:" + user)}
                 <Text>{user.email} Inside Stack</Text>
             </View>
     )

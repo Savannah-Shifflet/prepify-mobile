@@ -13,6 +13,7 @@ export default function Home() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [loading, setLoading] = useState(false);
+    const [errorValue, setErrorValue] = useState(null);
     const router = useRouter();
 
     const logIn = async()=>{
@@ -23,11 +24,12 @@ export default function Home() {
             if(response?.user){
                 setLoading(false);
                 router.replace("/inside")
+            }else{
+                setErrorValue("Credentials are not valid.");
+                setLoading(false);
             }
         } catch (error) {
-            // const passwordInput = document.getElementById('passwordInput')
-            // passwordInput.errorMessage="Credentials are not valid."
-            // passwordInput.errorStyle={ color: "red" }
+            
             console.log(error);
         }
     }
@@ -46,12 +48,13 @@ export default function Home() {
                         onChangeText={(text)=>setEmail(text)}
                         placeholder="Email"></Input>
                     <Input
-                        id = "passwordInput"
                         placeholder="Password"
                         secureTextEntry={true}
                         autoCapitalize="none"
                         onChangeText={(text)=>setPassword(text)}
                         value={password}
+                        errorStyle={{ color: "red" }}
+                        errorMessage={errorValue}
                     ></Input>
                     { loading ?
                         <ActivityIndicator size="large" /> :

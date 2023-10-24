@@ -4,7 +4,7 @@ import KeyboardWrapper from "../components/KeyboardWrapper";
 import { Input, Button, Text } from "@rneui/themed";
 import styles from "../theme/styles";
 import { useRouter } from "expo-router";
-import { appSignUp } from "../utils/store";
+import { appSignUp } from "../utils/authUtils";
 
 const Signup = () => {
     const [email, setEmail] = useState('');

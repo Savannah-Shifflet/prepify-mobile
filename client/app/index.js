@@ -1,29 +1,28 @@
-import { View, Text } from 'react-native'
+import { View, Text, ActivityIndicator } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import { useRouter, useSegments } from "expo-router";
 import { useRootNavigationState } from "expo-router";
-import { AuthStore } from "./utils/store";
+import { useFirebaseAuth } from './utils/authContext';
 
 export default function Index() {
     const segments = useSegments();
     const router = useRouter();
 
     const navigationState = useRootNavigationState();
-
-    const { initialized, isLoggedIn } = AuthStore.useState();
+    const user = useFirebaseAuth();
 
     useEffect(() => {
-        if (!navigationState?.key || !initialized) return;
+        if (!navigationState?.key ) return;
 
         const inAuthGroup = segments[0] === "(auth)";
-
-        if (!isLoggedIn & !inAuthGroup) {
+        console.log("index:" + user)
+        if (!user & !inAuthGroup) {
           // Redirect to the login page.
           router.replace("(auth)/login");
-        } else if(isLoggedIn) {
+        } else if(user) {
           router.replace("/inside");
         }
-      }, [segments, navigationState?.key, initialized]);
+      }, [segments, navigationState?.key]);
 
-      return <View>{!navigationState?.key ? <Text>LOADING...</Text> : <></>}</View>;
+      return <View>{!navigationState?.key ? <ActivityIndicator/> : <></>}</View>;
 }

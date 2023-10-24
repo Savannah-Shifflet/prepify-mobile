@@ -4,10 +4,10 @@ import { Link } from "expo-router";
 import { Input, Button, Text } from "@rneui/themed";
 import { useRouter } from "expo-router";
 
-import { appSignIn } from "../utils/store";
 import styles from "../theme/styles";
 import KeyboardWrapper from "../components/KeyboardWrapper";
 import SvgLogo from "../assets/logoJS";
+import { appLogIn } from "../utils/authUtils";
 
 export default function Home() {
     const [email, setEmail] = useState('');
@@ -18,7 +18,7 @@ export default function Home() {
     const logIn = async()=>{
         setLoading(true);
         try {
-            const response = await appSignIn(email, password);
+            const response = await appLogIn(email, password);
             console.log(response);
             if(response?.user){
                 setLoading(false);

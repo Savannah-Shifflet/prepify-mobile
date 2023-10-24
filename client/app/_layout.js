@@ -9,6 +9,7 @@ import {
 import {
     ConcertOne_400Regular
 } from "@expo-google-fonts/concert-one";
+import { FirebaseAuthProvider } from "./utils/authContext";
 
 export default function Layout() {
     let [fontsLoaded] = useFonts({
@@ -20,9 +21,11 @@ export default function Layout() {
         }else {
             return (
                 <ThemeProvider theme={theme}>
-                    <SafeAreaProvider>
-                        <Stack screenOptions={{ headerShown: false }}  />
-                    </SafeAreaProvider>
+                    <FirebaseAuthProvider>
+                        <SafeAreaProvider>
+                            <Stack screenOptions={{ headerShown: false }}  />
+                        </SafeAreaProvider>
+                    </FirebaseAuthProvider>
                 </ThemeProvider>
             )
         }

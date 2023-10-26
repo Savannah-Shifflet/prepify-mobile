@@ -3,6 +3,8 @@ import React from "react";
 import styles from "../theme/styles";
 import { useFirebaseAuth } from '../utils/authContext';
 import { Input, Button, Text } from "@rneui/themed";
+import Regimen from '../components/regimen';
+import AdherenceScore from '../components/adherenceScore';
 
 
 export default function Home() {
@@ -10,10 +12,12 @@ export default function Home() {
 
     return (
             <View style={{...styles.container, backgroundColor: theme.colors.background}}>
-                {/* Header with Prepify, menu */}
-
                 {/* Regimen section */}
                     {/* Conditional rendering: have they selected what regimen they use?  */}
+                <View style={styles.col[4]}>
+                    <Regimen user={user} regimen='new'/>
+                </View>
+                
                         {/* Regimen selected? - No: */}
                             {/* Two buttons: daily or 2-1-1 regimen if they haven't determined what they are going to do  */}
                             {/* Learn more button below?  */}
@@ -25,7 +29,9 @@ export default function Home() {
                                     {/* Button to take daily pill */}
                             {/* Button: do you want to change regimens? */}
                 {/*  */}
-                <Text>{user.email} Inside Stack</Text>
+                <View style={styles.col[4]}>
+                    <AdherenceScore user={user} />
+                </View>
             </View>
     )
 };

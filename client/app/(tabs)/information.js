@@ -10,7 +10,7 @@ export default function Information() {
 
     return (
             <View style={{...styles.container, backgroundColor: theme.colors.background}}>
-                <Text>{user.email} Information</Text>
+                <Text> Information</Text>
             </View>
     )
 };

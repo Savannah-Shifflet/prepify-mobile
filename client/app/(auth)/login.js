@@ -60,11 +60,10 @@ export default function Home() {
                         icon={{
                             name: 'arrow-right',
                             type: 'font-awesome',
-                            size: 15,
-                            color: theme.colors.secondary,
                         }}
                         iconRight
-                        onPress={logIn}/>
+                        onPress={logIn}
+                        customType='pink'/>
                     }
 
                     <Text style={{marginTop: 10}}>Don't have an account? <Link href={"(auth)/signup"}>Sign up</Link> </Text>

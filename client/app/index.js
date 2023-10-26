@@ -16,9 +16,10 @@ export default function Index() {
 
         const inAuthGroup = segments[0] === "(auth)";
         if (!user & !inAuthGroup) {
-          // Redirect to the login page.
+          // Redirect to the login page if not logged in
           router.replace("(auth)/login");
         } else if(user) {
+          // if already logged in, navigate to inside stack
           router.replace("/home");
         }
       }, [segments, navigationState?.key]);

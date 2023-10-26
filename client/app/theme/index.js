@@ -11,24 +11,55 @@ export default theme = createTheme({
     black: "#D1E8F8",
     grey0: "#D3D3D3",
     searchBg: "#D1E8F8",
-    divider: "#D1E8F8"
+    divider: "#D1E8F8",
+    error: '#f53427'
   },
   components: {
-    Text: {
+    Text:(props, theme)=>({
       style: {
-        color: "#D1E8F8",
+        color: props.color==='dark'? '#27005D':"#D1E8F8",
         fontFamily: 'ConcertOne_400Regular'
       }
-    },
-    Button: (props, theme)=>({
-      titleStyle: {
-        fontSize: 18,
-        fontFamily: 'ConcertOne_400Regular',
-        color: theme.colors.secondary
-      }
     }),
+    Button: (props, theme)=>
+      {switch(props.customType){
+        case('pink'):
+          return ({
+            titleStyle: {
+              fontSize: 18,
+              fontFamily: 'ConcertOne_400Regular',
+              color: theme.colors.background
+            },
+            buttonStyle: {
+              backgroundColor: theme.colors.secondary,
+              borderRadius: 10,
+              margin: 10
+            },
+            icon: {
+              color: theme.colors.background,
+              size: 15
+            }
+          })
+        case('transparent'):
+         return({
+          titleStyle: {
+            fontSize: 18,
+            fontFamily: 'ConcertOne_400Regular',
+            color: theme.colors.background
+          },
+          buttonStyle: {
+            backgroundColor: "transparent",
+            borderRadius: 10,
+            margin: 10
+          },
+          icon: {
+            color: theme.colors.background,
+            size: 15
+          }
+         })
+      }},
     Input: (props, theme)=>({
-      errorStyle: { color: "red", marginTop: 5 },
+      errorStyle: { color: theme.colors.error, marginTop: 5 },
       labelStyle: { color: theme.colors.primary},
       placeholderTextColor: theme.colors.grey0,
       inputContainerStyle: {borderBottomColor: theme.colors.secondary},
@@ -36,6 +67,9 @@ export default theme = createTheme({
         fontFamily: 'JosefinSans_400Regular',
         fontWeight: 'bold'
       }
+    }),
+    Card: (props, theme)=>({
+      containerStyle: {backgroundColor: theme.colors.primary, borderRadius: 5 }
     }),
   }
 })

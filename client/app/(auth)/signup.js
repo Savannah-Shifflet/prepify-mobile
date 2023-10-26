@@ -123,8 +123,9 @@ const Signup = () => {
                         color: theme.colors.secondary,
                     }}
                     iconRight
-                    onPress={signUp}/>
-                    {submitError ? <Text style={{color: "red", marginTop: 10}}>Please make sure you have submitted valid inputs.</Text> :
+                    onPress={signUp}
+                    customType='pink'/>
+                    {submitError ? <Text style={{color: theme.colors.error, marginTop: 10}}>Please make sure you have submitted valid inputs.</Text> :
                     <></>
                     }
                     </>

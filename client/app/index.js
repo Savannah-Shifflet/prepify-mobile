@@ -19,7 +19,7 @@ export default function Index() {
           // Redirect to the login page.
           router.replace("(auth)/login");
         } else if(user) {
-          router.replace("/inside");
+          router.replace("/home");
         }
       }, [segments, navigationState?.key]);
 

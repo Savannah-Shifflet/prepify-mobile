@@ -67,7 +67,7 @@ const Signup = () => {
                 const response = await appSignUp(input.email, input.password);
                 if(response?.user){
                     setLoading(false);
-                    router.replace("/inside")
+                    router.replace("/home")
                 }
                 console.log(response);
             } catch (error) {

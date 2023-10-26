@@ -20,7 +20,7 @@ const firebaseConfig = {
 // Initialize Firebase
 export const firebase_app = initializeApp(firebaseConfig);
 export const firebase_auth = initializeAuth(firebase_app, {
-    // persistence: getReactNativePersistence(ReactNativeAsyncStorage)
+    persistence: getReactNativePersistence(ReactNativeAsyncStorage)
 });
 // TODO: add analytics to app
 // export const analytics = getAnalytics(firebase_app);

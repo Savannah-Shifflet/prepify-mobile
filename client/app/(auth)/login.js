@@ -22,7 +22,7 @@ export default function Home() {
             const response = await appLogIn(email, password);
             if(response?.user){
                 setLoading(false);
-                router.replace("/inside")
+                router.replace("/home")
             }else{
                 setErrorValue("Credentials are not valid.");
                 setLoading(false);

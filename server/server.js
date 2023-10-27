@@ -2,7 +2,7 @@ const express = require('express');
 const { ApolloServer } = require('apollo-server-express');
 const cors = require('cors');
 const path = require('path');
-// const { authMiddleware } = require('./utils/auth');
+const { authMiddleware } = require('./utils/auth');
 
 const { typeDefs, resolvers } = require('./schemas');
 const sequelize = require('./config/connection');
@@ -13,7 +13,7 @@ app.use(cors());
 const server = new ApolloServer({
     typeDefs,
     resolvers,
-    // context: authMiddleware,
+    context: authMiddleware,
 });
 
 app.use(express.urlencoded({ extended: false }));

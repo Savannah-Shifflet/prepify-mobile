@@ -1,13 +1,12 @@
 import React, { createContext, useEffect, useState, useContext } from "react";
-import { onAuthStateChanged } from 'firebase/auth'
-import { firebase_auth } from "../../firebaseConfig";
+import {firebase_auth} from "../../firebaseConfig";
+import { onAuthStateChanged } from "firebase/auth";
 
 
 const FirebaseAuthContext = createContext(undefined);
 
 const FirebaseAuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
-  const value = { user };
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(firebase_auth, user=>{
@@ -17,9 +16,11 @@ const FirebaseAuthProvider = ({ children }) => {
             setUser(null);
         }
     });
+    console.log(unsubscribe)
     return unsubscribe;
-  }, []);
+}, []);
 
+  const value = { user, logOutTest };
   return (
     <FirebaseAuthContext.Provider value={value}>
       {children}
@@ -28,13 +29,7 @@ const FirebaseAuthProvider = ({ children }) => {
 };
 
 function useFirebaseAuth() {
-    const context = useContext(FirebaseAuthContext);
-    if (context === undefined) {
-      throw new Error(
-        "useFirebaseAuth must be used within a FirebaseAuthProvider"
-      );
-    }
-    return context.user;
+    return useContext(FirebaseAuthContext);
   }
 
   export { FirebaseAuthProvider, useFirebaseAuth };

@@ -10,6 +10,20 @@ const resolvers = {
       const users = await User.findAll();
       return users;
     }
+  },
+  Mutation: {
+    addUser: async(parent, args, context) => {
+      const user = await User.create({UID: args.uid, regimen: args.regimen})
+      return user;
+    },
+    updateUser: async(parent, args, context) => {
+      const user = await User.update({args}, {
+        where: {
+          UID: args.uid
+        }
+      })
+      return user;
+    },
   }
 };
 

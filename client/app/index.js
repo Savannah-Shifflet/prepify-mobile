@@ -9,7 +9,7 @@ export default function Index() {
     const router = useRouter();
 
     const navigationState = useRootNavigationState();
-    const user = useFirebaseAuth();
+    const {user} = useFirebaseAuth();
 
     useEffect(() => {
         if (!navigationState?.key ) return;
@@ -22,7 +22,7 @@ export default function Index() {
           // if already logged in, navigate to inside stack
           router.replace("/home");
         }
-      }, [segments, navigationState?.key]);
+      }, [segments, navigationState?.key, user]);
 
       return <View>{!navigationState?.key ? <ActivityIndicator/> : <></>}</View>;
 }

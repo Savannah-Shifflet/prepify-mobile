@@ -69,7 +69,23 @@ export default theme = createTheme({
       }
     }),
     Card: (props, theme)=>({
-      containerStyle: {backgroundColor: theme.colors.primary, borderRadius: 5 }
+      containerStyle: {backgroundColor: theme.colors.primary, borderRadius: 5 },
+      Title: {
+        style: {
+          fontFamily: 'ConcertOne_400Regular',
+          color: theme.colors.background
+        }
+      }
     }),
+    CardTitle: (props, theme)=>({
+        style: {
+          fontFamily: 'ConcertOne_400Regular',
+          color: theme.colors.background,
+          fontSize: 20
+        }
+    }),
+    CardDivider: (props, theme)=>({
+      color: theme.colors.secondary,
+  }),
   }
 })

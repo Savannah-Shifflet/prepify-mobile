@@ -9,7 +9,7 @@ import KeyboardWrapper from "../components/KeyboardWrapper";
 import SvgLogo from "../assets/logoJS";
 import { appLogIn } from "../utils/authUtils";
 
-export default function Home() {
+export default function Login() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [loading, setLoading] = useState(false);

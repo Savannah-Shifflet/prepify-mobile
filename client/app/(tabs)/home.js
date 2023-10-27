@@ -11,11 +11,12 @@ export default function Home() {
     const user = useFirebaseAuth();
 
     return (
-            <View style={{...styles.container, backgroundColor: theme.colors.background}}>
+            <View style={{...styles.container, backgroundColor: theme.colors.background }}>
+                <View style={{width: '100%', flex: 1, justifyContent: 'space-evenly', height: '100%'}}>
                 {/* Regimen section */}
                     {/* Conditional rendering: have they selected what regimen they use?  */}
                 <View style={styles.col[4]}>
-                    <Regimen user={user} regimen='new'/>
+                    <Regimen user={user} regimen='ondemand'/>
                 </View>
                 
                         {/* Regimen selected? - No: */}
@@ -31,6 +32,7 @@ export default function Home() {
                 {/*  */}
                 <View style={styles.col[4]}>
                     <AdherenceScore user={user} />
+                </View>
                 </View>
             </View>
     )

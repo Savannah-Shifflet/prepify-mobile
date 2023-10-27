@@ -4,23 +4,40 @@ export default theme = createTheme({
   colors: {
     primary: "#D1E8F8",
     secondary: "#FF9392",
-    tertiary: 'green',
+    tertiary: '#FFD275',
     accent: 'red',
     background: '#27005D',
     white: "#fff",
-    black: "#D1E8F8",
+    black: "#000",
     grey0: "#D3D3D3",
+    grey1: "#6A6C6E",
     searchBg: "#D1E8F8",
     divider: "#D1E8F8",
     error: '#f53427'
   },
   components: {
-    Text:(props, theme)=>({
-      style: {
-        color: props.color==='dark'? '#27005D':"#D1E8F8",
-        fontFamily: 'ConcertOne_400Regular'
-      }
-    }),
+    Text:(props, theme)=>
+      {switch(props.customType){
+        case('dark'):
+          return ({
+            style: {
+              color: theme.colors.background,
+              fontFamily: 'ConcertOne_400Regular'
+            }
+          })
+        case('italics'):{
+          return ({
+            style: {
+              color: theme.colors.grey1,
+              fontFamily: 'ConcertOne_400Regular',
+              fontStyle: 'italic',
+              fontSize: 12
+            }
+          })
+        }
+        }
+
+      },
     Button: (props, theme)=>
       {switch(props.customType){
         case('pink'):
@@ -57,6 +74,19 @@ export default theme = createTheme({
             size: 15
           }
          })
+         case('new'):
+         return ({
+           titleStyle: {
+             fontSize: 18,
+             fontFamily: 'ConcertOne_400Regular',
+             color: theme.colors.background
+           },
+           buttonStyle: {
+             backgroundColor: theme.colors.tertiary,
+             borderRadius: 10,
+             margin: 10
+           }
+         })
       }},
     Input: (props, theme)=>({
       errorStyle: { color: theme.colors.error, marginTop: 5 },
@@ -89,3 +119,6 @@ export default theme = createTheme({
   }),
   }
 })
+
+// #D2D6EF
+// #AF929D

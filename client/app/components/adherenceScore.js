@@ -8,7 +8,7 @@ export default function AdherenceScore({user}) {
 // TODO: add logic for if there is no data show "once you have adherence data etc." vs the actual score
     return (
         <Card>
-            <Text color='dark'>Adherence Score Section</Text>
+            <Text customType='dark'>Adherence Score Section</Text>
         </Card>
     )
 };

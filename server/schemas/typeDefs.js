@@ -4,17 +4,18 @@ const typeDefs = gql`
   type User {
     id: ID!
     UID: String!
-    currentRegimen: String!
+    regimen: String!
   }
 
   type Query {
     users: [User]
     user(id: ID!): User
   }
+
+  type Mutation {
+    addUser(UID: String!, regimen: String!): User
+    updateUser(id: Int, UID: String, regimen: String ): User
+  }
 `;
 
 module.exports = typeDefs;
-
-// type Mutation {
-//   createUser(username: String!, email: String!, password: String!): User
-// }

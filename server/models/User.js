@@ -16,7 +16,7 @@ User.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
-    currentRegimen: {
+    regimen: {
       type: DataTypes.STRING,
       allowNull: false
     }

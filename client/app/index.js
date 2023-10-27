@@ -10,6 +10,7 @@ export default function Index() {
 
     const navigationState = useRootNavigationState();
     const {user} = useFirebaseAuth();
+    console.log('user in index: ' + user)
 
     useEffect(() => {
         if (!navigationState?.key ) return;

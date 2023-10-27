@@ -7,7 +7,6 @@ const FirebaseAuthContext = createContext(undefined);
 
 const FirebaseAuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
-
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(firebase_auth, user=>{
         if(user){
@@ -16,11 +15,10 @@ const FirebaseAuthProvider = ({ children }) => {
             setUser(null);
         }
     });
-    console.log(unsubscribe)
     return unsubscribe;
 }, []);
 
-  const value = { user, logOutTest };
+  const value = { user };
   return (
     <FirebaseAuthContext.Provider value={value}>
       {children}

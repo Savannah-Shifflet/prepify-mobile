@@ -10,12 +10,12 @@ export default function New({user}) {
         <>
             <Card.Title>Step 1: Choose your regimen</Card.Title>
             <Card.Divider/>
-            <Text style={{fontSize: 15, width: '100%', textAlign: 'center'}} color="dark" >Do you take PrEP daily or as needed?</Text>
+            <Text style={{fontSize: 15, width: '100%', textAlign: 'center'}} customType="dark" >Do you take PrEP daily or as needed?</Text>
             <Button customType='pink'>Daily</Button>
             <Button customType='pink'>On Demand</Button>
             <Link href='/(tabs)/information'
                 style={{display: "flex"}}>
-                <Text h4 color='dark'>More information</Text>
+                <Text h4 customType='dark'>More information</Text>
                 <Icon name='arrow-right'
                     type='font-awesome'
                     color={theme.colors.background}

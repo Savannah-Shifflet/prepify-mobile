@@ -24,8 +24,8 @@ export default theme = createTheme({
               color: theme.colors.background,
               fontFamily: 'ConcertOne_400Regular'
             }
-          })
-        case('italics'):{
+          });
+        case('italics'):
           return ({
             style: {
               color: theme.colors.grey1,
@@ -33,10 +33,15 @@ export default theme = createTheme({
               fontStyle: 'italic',
               fontSize: 12
             }
-          })
-        }
-        }
-
+          });
+        default:
+          return ({
+            style: {
+              color: theme.colors.primary,
+              fontFamily: 'ConcertOne_400Regular'
+            }
+          });
+        };
       },
     Button: (props, theme)=>
       {switch(props.customType){
@@ -95,7 +100,8 @@ export default theme = createTheme({
       inputContainerStyle: {borderBottomColor: theme.colors.secondary},
       style: {
         fontFamily: 'JosefinSans_400Regular',
-        fontWeight: 'bold'
+        fontWeight: 'bold',
+        color: theme.colors.primary
       }
     }),
     Card: (props, theme)=>({

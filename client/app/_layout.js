@@ -14,13 +14,13 @@ import { ApolloClient, InMemoryCache, ApolloProvider, HttpLink } from '@apollo/c
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { setContext } from '@apollo/client/link/context';
 import {firebase_auth} from "../firebaseConfig";
-import { polyfill as polyfillEncoding } from "react-native-polyfill-globals/src/encoding";
-import { polyfill as polyfillReadableStream } from "react-native-polyfill-globals/src/readable-stream";
-import { polyfill as polyfillFetch } from "react-native-polyfill-globals/src/fetch";
+// import { polyfill as polyfillEncoding } from "react-native-polyfill-globals/src/encoding";
+// import { polyfill as polyfillReadableStream } from "react-native-polyfill-globals/src/readable-stream";
+// import { polyfill as polyfillFetch } from "react-native-polyfill-globals/src/fetch";
 
-polyfillReadableStream();
-polyfillEncoding();
-polyfillFetch();
+// polyfillReadableStream();
+// polyfillEncoding();
+// polyfillFetch();
 
 // const auth = firebase_auth;
 

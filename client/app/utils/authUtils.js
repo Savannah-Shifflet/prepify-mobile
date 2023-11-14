@@ -5,6 +5,8 @@ import {
     getAuth
   } from "firebase/auth";
   import {firebase_auth} from "../../firebaseConfig";
+  import { useRouter } from "expo-router";
+
 
 const auth = firebase_auth;
 
@@ -19,9 +21,12 @@ export const appLogIn = async (email, password) => {
   };
 
 export const appLogOut = async () => {
+  const router = useRouter();
   const auth = getAuth();
     try {
       await signOut(auth);
+      console.log('logging out')
+      router.replace("(auth)/login");
       return;
     } catch (e) {
       return { error: e };

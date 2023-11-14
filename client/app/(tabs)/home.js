@@ -12,13 +12,12 @@ export default function Home() {
 
     return (
             <View style={{...styles.container, backgroundColor: theme.colors.background }}>
-                <View style={{width: '100%', flex: 1, justifyContent: 'space-evenly', height: '100%'}}>
+                <View style={{width: '100%', flex: 1, justifyContent: 'space-evenly', height: '90%'}}>
                 {/* Regimen section */}
                     {/* Conditional rendering: have they selected what regimen they use?  */}
                 <View style={styles.col[4]}>
-                    <Regimen user={user} regimen='ondemand'/>
+                    <Regimen user={user} regimen='new'/>
                 </View>
-                
                         {/* Regimen selected? - No: */}
                             {/* Two buttons: daily or 2-1-1 regimen if they haven't determined what they are going to do  */}
                             {/* Learn more button below?  */}

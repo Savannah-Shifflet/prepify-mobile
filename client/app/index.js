@@ -16,7 +16,7 @@ export default function Index() {
         if (!navigationState?.key ) return;
 
         const inAuthGroup = segments[0] === "(auth)";
-        if (!user & !inAuthGroup) {
+        if (!user && !inAuthGroup) {
           // Redirect to the login page if not logged in
           router.replace("(auth)/login");
         } else if(user) {

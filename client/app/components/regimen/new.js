@@ -8,7 +8,7 @@ export default function New({user}) {
 
     return (
         <>
-            <Card.Title>Step 1: Choose your regimen</Card.Title>
+            <Card.Title>Step 1: Choose your regimen {user.email}</Card.Title>
             <Card.Divider/>
             <Text style={{fontSize: 15, width: '100%', textAlign: 'center'}} customType="dark" >Do you take PrEP daily or as needed?</Text>
             <Button customType='pink'>Daily</Button>

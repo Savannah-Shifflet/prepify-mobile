@@ -8,7 +8,7 @@ import AdherenceScore from '../components/adherenceScore';
 
 
 export default function Home() {
-    const user = useFirebaseAuth();
+    const {user} = useFirebaseAuth();
 
     return (
             <View style={{...styles.container, backgroundColor: theme.colors.background }}>

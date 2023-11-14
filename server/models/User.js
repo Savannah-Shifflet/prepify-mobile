@@ -3,7 +3,6 @@ const sequelize = require('../config/connection');
 
 class User extends Model {}
 
-// TODO: update model to match firebase auth method - add uid, remove username? add current regimen type
 User.init(
   {
     id: {

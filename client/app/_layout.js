@@ -14,39 +14,40 @@ import { ApolloClient, InMemoryCache, ApolloProvider, HttpLink } from '@apollo/c
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { setContext } from '@apollo/client/link/context';
 import {firebase_auth} from "../firebaseConfig";
-// import { polyfill as polyfillEncoding } from "react-native-polyfill-globals/src/encoding";
-// import { polyfill as polyfillReadableStream } from "react-native-polyfill-globals/src/readable-stream";
-// import { polyfill as polyfillFetch } from "react-native-polyfill-globals/src/fetch";
+import { polyfill as polyfillEncoding } from "react-native-polyfill-globals/src/encoding";
+import { polyfill as polyfillReadableStream } from "react-native-polyfill-globals/src/readable-stream";
+import { polyfill as polyfillFetch } from "react-native-polyfill-globals/src/fetch";
 
-// polyfillReadableStream();
-// polyfillEncoding();
-// polyfillFetch();
+polyfillReadableStream();
+polyfillEncoding();
+polyfillFetch();
 
-// const auth = firebase_auth;
+const auth = firebase_auth;
 
-// const httpLink = new HttpLink({ uri: "http://localhost:3001/graphql",
-//     fetchOptions: {
-//         reactNative: { textStreaming: true },
-//     } 
-// });
+const httpLink = new HttpLink({
+    uri: "/graphql",
+    fetchOptions: {
+        reactNative: { textStreaming: true },
+    }
+});
 
-// const authLink = setContext(async(_, { headers }) => {
-//     const token = async() => await auth.currentUser?.getIdToken()
-//     console.log("token in layout: " + token)
-//     return {
-//         headers: {
-//         ...headers,
-//         authorization: token ? `Bearer ${token}` : '',
-//         },
-//     };
-// });
+const authLink = setContext(async(_, { headers }) => {
+    const token = async() => await auth.currentUser?.getIdToken()
+    console.log("token in layout: " + token)
+    return {
+        headers: {
+            ...headers,
+            authorization: token ? `Bearer ${token}` : '',
+        },
+    };
+});
 
 // const link = authLink.concat(httpLink)
 
-// const client = new ApolloClient({
-//     uri: "localhost:3001/graphql",
-//     cache: new InMemoryCache(),
-// });
+const client = new ApolloClient({
+    uri: authLink.concat(httpLink),
+    cache: new InMemoryCache()
+});
 
 export default function Layout() {
     let [fontsLoaded] = useFonts({
@@ -57,6 +58,7 @@ export default function Layout() {
             return null;
         }else {
             return (
+                <ApolloProvider client={client}>
                 <ThemeProvider theme={theme}>
                     <FirebaseAuthProvider>
                         <SafeAreaProvider>
@@ -64,6 +66,7 @@ export default function Layout() {
                         </SafeAreaProvider>
                     </FirebaseAuthProvider>
                 </ThemeProvider>
+                </ApolloProvider>
             )
         }
     };

@@ -13,7 +13,7 @@ const resolvers = {
   },
   Mutation: {
     addUser: async(parent, args, context) => {
-      const user = await User.create({UID: args.uid, regimen: args.regimen})
+      const user = await User.create({UID: args.uid, regimen: "new"})
       return user;
     },
     updateUser: async(parent, args, context) => {
